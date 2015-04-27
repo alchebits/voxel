@@ -44,6 +44,7 @@ std::vector<realtype>* QuadTree::calcRayIntersects(const Point2D& pos){
 
 	Point isectPoint;
 	Triangle triangle;
+        Quadrangle quad;
 	for(unsigned i = 0 ; i < possIsectFaces->size() ; ++i){
 		const Face* nextFace = possIsectFaces->at(i);
 		switch(nextFace->getFaceType()){
@@ -64,6 +65,11 @@ std::vector<realtype>* QuadTree::calcRayIntersects(const Point2D& pos){
 			break;
 		case Face::FACE_QUADRANGLE:
 			std::cerr << __FILE__ << " " << __LINE__ << "DO DOIMPLEMENTOWANIA, teraz nie powinno sie wykonac !!" << std::endl;
+                        
+//                        quad = ((const QuadrangleFace*) nextFace)->getShape();
+//                        if( mat.intersectRayQuadrangle(ray, quad, &isectPoint) == 1 ){
+//				zIntersections->push_back(isectPoint.z);
+//			}
 			break;
 		default:
 			std::cerr << __FILE__ << " " << __LINE__ << "To nie powinno sie wykonac !!" << std::endl;
@@ -179,6 +185,7 @@ unsigned QuadTreeNode::getIntersectFacesCount(){
 void QuadTreeNode::prepareOwnFacesList(const std::vector<const Face*>* parentFaces){
 	Mathematician mat;
 	Triangle triangle;
+        Quadrangle quad;
 	//int counter = 0;
 	for(unsigned i = 0 ; i < parentFaces->size() ; ++i){
 		const Face* nextFace = parentFaces->at(i);
@@ -199,7 +206,13 @@ void QuadTreeNode::prepareOwnFacesList(const std::vector<const Face*>* parentFac
 			break;
 		case Face::FACE_QUADRANGLE:
 			std::cerr << __FILE__ << " " << __LINE__ << "DO DOIMPLEMENTOWANIA, teraz nie powinno sie wykonac !!" << std::endl;
-			break;
+			
+//                        quad = ((const QuadrangleFace*) nextFace)->getShape();
+//                        if(mat.intersectQuadrangleBoundingBox(quad, aabb)){
+//                            myOverlapFaces.push_back(nextFace);
+//                        }
+                        
+                        break;
 		default:
 			std::cerr << __FILE__ << " " << __LINE__ << "To nie powinno sie wykonac !!" << std::endl;
 			break;

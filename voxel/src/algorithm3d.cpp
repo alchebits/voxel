@@ -132,6 +132,15 @@ Quadrangle::Quadrangle(const Point& P0,const Point& P1, const Point& P2, const P
 	this->P2 = P2;
 	this->P3 = P3;
 }
+
+ Triangle Quadrangle::getTriangle1() const{
+     return Triangle(P0, P1, P2);
+ }
+      
+ Triangle Quadrangle::getTriangle2() const{
+     return Triangle(P0, P2, P3);
+ }
+
 std::ostream& operator<< (std::ostream& out, const Quadrangle& quadrangle){
 	out << quadrangle.P0 << std::endl << quadrangle.P1 << std::endl << quadrangle.P2 << std::endl << quadrangle.P3;
 	return out;
@@ -266,6 +275,16 @@ int Mathematician::intersectRayTriangle( const Ray& R,const Triangle& T, Point* 
 	return 1;                       // I is in T
 }
 
+int Mathematician::intersectRayQuadrangle(const Ray& R, const Quadrangle& quad, Point* I ){
+    Triangle triangle = quad.getTriangle1();
+    if(intersectRayTriangle(R, triangle, I) == 1){
+        return 1;
+    }
+    
+    triangle = quad.getTriangle2();
+    return intersectRayTriangle(R, triangle, I);
+}
+
 bool Mathematician::isPointInBoundingBox(const Point& point, const BoundingBox& box){
 	if( (point.x >= box.xyzMin.x) && (point.x <= box.xyzMax.x) )
 		if( (point.y >= box.xyzMin.y) && (point.y <= box.xyzMax.y) )
@@ -282,6 +301,16 @@ bool Mathematician::intersectTriangleBoundingBox(const Triangle& triangle, const
 	int result = triBoxOverlap(boxCenterBuf,boxHalfSizeBuf,trivertsBuf);
 	//std::cout << "in metod: " << result << std::endl;
 	return (result == 1) ? true : false;
+}
+
+bool Mathematician::intersectQuadrangleBoundingBox(const Quadrangle& quad, const BoundingBox& box){
+    Triangle triangle = quad.getTriangle1();
+    if(intersectTriangleBoundingBox(triangle, box)){
+        return true; // true if with first triangle of quad is intersecting
+    }
+    
+    triangle = quad.getTriangle2();
+    return intersectTriangleBoundingBox(triangle, box);
 }
 
 void Mathematician::fillBoxCenterBuf(const Point& boxCenter){

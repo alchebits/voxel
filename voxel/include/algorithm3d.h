@@ -119,8 +119,12 @@ std::ostream& operator<< (std::ostream& out, const Triangle& triangle);
 class Quadrangle{
 public:
 	Point P0, P1, P2, P3;
+        Quadrangle() {}
 	Quadrangle(const Point& P0,const Point& P1, const Point& P2, const Point& P3);
-
+        
+        Triangle getTriangle1() const;
+        Triangle getTriangle2() const;
+        
 	friend std::ostream& operator<< (std::ostream& out, const Quadrangle& quadrangle);
 };
 std::ostream& operator<< (std::ostream& out, const Quadrangle& quadrangle);
@@ -177,9 +181,11 @@ public:
 	//             0 =  disjoint (no intersect)
 	//             1 =  intersect in unique point I1
 	//             2 =  are in the same plane
-	int intersectRayTriangle(const Ray& R,const Triangle& T, Point* I );
+	int intersectRayTriangle(const Ray& R, const Triangle& T, Point* I );
+        int intersectRayQuadrangle(const Ray& R, const Quadrangle& quad, Point* I );
 	bool isPointInBoundingBox(const Point& point, const BoundingBox& box);
 	bool intersectTriangleBoundingBox(const Triangle& triangle, const BoundingBox& box);
+        bool intersectQuadrangleBoundingBox(const Quadrangle& quad, const BoundingBox& box);
 	Point calculateCenterBoundingBox(const BoundingBox& box);
 
 private:

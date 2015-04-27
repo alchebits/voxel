@@ -4,7 +4,7 @@ int planeBoxOverlap(float normal[3], float vert[3], float maxbox[3])	// -NJMP-
 {
   int q;
   float vmin[3],vmax[3],v;
-  for(q=X;q<=Z;q++)
+  for(q=XXID;q<=ZZID;q++)
   {
     v=vert[q];					// -NJMP-
     if(normal[q]>0.0f)
@@ -54,29 +54,29 @@ int triBoxOverlap(float boxcenter[3],float boxhalfsize[3],float triverts[3][3])
 
    /* Bullet 3:  */
    /*  test the 9 tests first (this was faster) */
-   fex = fabs(e0[X]);
-   fey = fabs(e0[Y]);
-   fez = fabs(e0[Z]);
+   fex = fabs(e0[XXID]);
+   fey = fabs(e0[YYID]);
+   fez = fabs(e0[ZZID]);
 
-   AXISTEST_X01(e0[Z], e0[Y], fez, fey);
-   AXISTEST_Y02(e0[Z], e0[X], fez, fex);
-   AXISTEST_Z12(e0[Y], e0[X], fey, fex);
+   AXISTEST_X01(e0[ZZID], e0[YYID], fez, fey);
+   AXISTEST_Y02(e0[ZZID], e0[XXID], fez, fex);
+   AXISTEST_Z12(e0[YYID], e0[XXID], fey, fex);
 
-   fex = fabs(e1[X]);
-   fey = fabs(e1[Y]);
-   fez = fabs(e1[Z]);
+   fex = fabs(e1[XXID]);
+   fey = fabs(e1[YYID]);
+   fez = fabs(e1[ZZID]);
 
-   AXISTEST_X01(e1[Z], e1[Y], fez, fey);
-   AXISTEST_Y02(e1[Z], e1[X], fez, fex);
-   AXISTEST_Z0(e1[Y], e1[X], fey, fex);
+   AXISTEST_X01(e1[ZZID], e1[YYID], fez, fey);
+   AXISTEST_Y02(e1[ZZID], e1[XXID], fez, fex);
+   AXISTEST_Z0(e1[YYID], e1[XXID], fey, fex);
 
-   fex = fabs(e2[X]);
-   fey = fabs(e2[Y]);
-   fez = fabs(e2[Z]);
+   fex = fabs(e2[XXID]);
+   fey = fabs(e2[YYID]);
+   fez = fabs(e2[ZZID]);
 
-   AXISTEST_X2(e2[Z], e2[Y], fez, fey);
-   AXISTEST_Y1(e2[Z], e2[X], fez, fex);
-   AXISTEST_Z12(e2[Y], e2[X], fey, fex);
+   AXISTEST_X2(e2[ZZID], e2[YYID], fez, fey);
+   AXISTEST_Y1(e2[ZZID], e2[XXID], fez, fex);
+   AXISTEST_Z12(e2[YYID], e2[XXID], fey, fex);
 
    /* Bullet 1: */
    /*  first test overlap in the {x,y,z}-directions */
@@ -85,17 +85,17 @@ int triBoxOverlap(float boxcenter[3],float boxhalfsize[3],float triverts[3][3])
    /*  the triangle against the AABB */
 
 
-   /* test in X-direction */
-   FINDMINMAX(v0[X],v1[X],v2[X],min,max);
-   if(min>boxhalfsize[X] || max<-boxhalfsize[X]) return 0;
+   /* test in XXID-direction */
+   FINDMINMAX(v0[XXID],v1[XXID],v2[XXID],min,max);
+   if(min>boxhalfsize[XXID] || max<-boxhalfsize[XXID]) return 0;
 
-   /* test in Y-direction */
-   FINDMINMAX(v0[Y],v1[Y],v2[Y],min,max);
-   if(min>boxhalfsize[Y] || max<-boxhalfsize[Y]) return 0;
+   /* test in YYID-direction */
+   FINDMINMAX(v0[YYID],v1[YYID],v2[YYID],min,max);
+   if(min>boxhalfsize[YYID] || max<-boxhalfsize[YYID]) return 0;
 
-   /* test in Z-direction */
-   FINDMINMAX(v0[Z],v1[Z],v2[Z],min,max);
-   if(min>boxhalfsize[Z] || max<-boxhalfsize[Z]) return 0;
+   /* test in ZZID-direction */
+   FINDMINMAX(v0[ZZID],v1[ZZID],v2[ZZID],min,max);
+   if(min>boxhalfsize[ZZID] || max<-boxhalfsize[ZZID]) return 0;
 
    /* Bullet 2: */
    /*  test if the box intersects the plane of the triangle */

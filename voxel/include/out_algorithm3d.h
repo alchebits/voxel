@@ -30,11 +30,11 @@
 /********************************************************/
 
 
-#define X 0
+#define XXID 0
 
-#define Y 1
+#define YYID 1
 
-#define Z 2
+#define ZZID 2
 
 
 
@@ -60,52 +60,52 @@
 int planeBoxOverlap(float normal[3], float vert[3], float maxbox[3]);	// -NJMP-
 
 
-/*======================== X-tests ========================*/
+/*======================== XXID-tests ========================*/
 
 #define AXISTEST_X01(a, b, fa, fb)			   \
-	p0 = a*v0[Y] - b*v0[Z];			       	   \
-	p2 = a*v2[Y] - b*v2[Z];			       	   \
+	p0 = a*v0[YYID] - b*v0[ZZID];			       	   \
+	p2 = a*v2[YYID] - b*v2[ZZID];			       	   \
         if(p0<p2) {min=p0; max=p2;} else {min=p2; max=p0;} \
-	rad = fa * boxhalfsize[Y] + fb * boxhalfsize[Z];   \
+	rad = fa * boxhalfsize[YYID] + fb * boxhalfsize[ZZID];   \
 	if(min>rad || max<-rad) return 0;
 
 #define AXISTEST_X2(a, b, fa, fb)			   \
-	p0 = a*v0[Y] - b*v0[Z];			           \
-	p1 = a*v1[Y] - b*v1[Z];			       	   \
+	p0 = a*v0[YYID] - b*v0[ZZID];			           \
+	p1 = a*v1[YYID] - b*v1[ZZID];			       	   \
         if(p0<p1) {min=p0; max=p1;} else {min=p1; max=p0;} \
-	rad = fa * boxhalfsize[Y] + fb * boxhalfsize[Z];   \
+	rad = fa * boxhalfsize[YYID] + fb * boxhalfsize[ZZID];   \
 	if(min>rad || max<-rad) return 0;
 
-/*======================== Y-tests ========================*/
+/*======================== YYID-tests ========================*/
 
 #define AXISTEST_Y02(a, b, fa, fb)			   \
-	p0 = -a*v0[X] + b*v0[Z];		      	   \
-	p2 = -a*v2[X] + b*v2[Z];	       	       	   \
+	p0 = -a*v0[XXID] + b*v0[ZZID];		      	   \
+	p2 = -a*v2[XXID] + b*v2[ZZID];	       	       	   \
         if(p0<p2) {min=p0; max=p2;} else {min=p2; max=p0;} \
-	rad = fa * boxhalfsize[X] + fb * boxhalfsize[Z];   \
+	rad = fa * boxhalfsize[XXID] + fb * boxhalfsize[ZZID];   \
 	if(min>rad || max<-rad) return 0;
 
 #define AXISTEST_Y1(a, b, fa, fb)			   \
-	p0 = -a*v0[X] + b*v0[Z];		      	   \
-	p1 = -a*v1[X] + b*v1[Z];	     	       	   \
+	p0 = -a*v0[XXID] + b*v0[ZZID];		      	   \
+	p1 = -a*v1[XXID] + b*v1[ZZID];	     	       	   \
         if(p0<p1) {min=p0; max=p1;} else {min=p1; max=p0;} \
-	rad = fa * boxhalfsize[X] + fb * boxhalfsize[Z];   \
+	rad = fa * boxhalfsize[XXID] + fb * boxhalfsize[ZZID];   \
 	if(min>rad || max<-rad) return 0;
 
-/*======================== Z-tests ========================*/
+/*======================== ZZID-tests ========================*/
 
 #define AXISTEST_Z12(a, b, fa, fb)			   \
-	p1 = a*v1[X] - b*v1[Y];			           \
-	p2 = a*v2[X] - b*v2[Y];			       	   \
+	p1 = a*v1[XXID] - b*v1[YYID];			           \
+	p2 = a*v2[XXID] - b*v2[YYID];			       	   \
         if(p2<p1) {min=p2; max=p1;} else {min=p1; max=p2;} \
-	rad = fa * boxhalfsize[X] + fb * boxhalfsize[Y];   \
+	rad = fa * boxhalfsize[XXID] + fb * boxhalfsize[YYID];   \
 	if(min>rad || max<-rad) return 0;
 
 #define AXISTEST_Z0(a, b, fa, fb)			   \
-	p0 = a*v0[X] - b*v0[Y];				   \
-	p1 = a*v1[X] - b*v1[Y];			           \
+	p0 = a*v0[XXID] - b*v0[YYID];				   \
+	p1 = a*v1[XXID] - b*v1[YYID];			           \
         if(p0<p1) {min=p0; max=p1;} else {min=p1; max=p0;} \
-	rad = fa * boxhalfsize[X] + fb * boxhalfsize[Y];   \
+	rad = fa * boxhalfsize[XXID] + fb * boxhalfsize[YYID];   \
 	if(min>rad || max<-rad) return 0;
 
 int triBoxOverlap(float boxcenter[3],float boxhalfsize[3],float triverts[3][3]);

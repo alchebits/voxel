@@ -48,7 +48,7 @@
           <buildCommandWorkingDir>../voxel-build/netbeans</buildCommandWorkingDir>
           <buildCommand>${MAKE} -f Makefile</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
-          <executablePath></executablePath>
+          <executablePath>..\voxel-build\netbeans\bin\voxel.exe</executablePath>
           <ccTool>
             <incDir>
               <pElem></pElem>

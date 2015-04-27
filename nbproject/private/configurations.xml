@@ -128,8 +128,9 @@
       <runprofile version="9">
         <runcommandpicklist>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" -i input/torus.obj</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <runcommand>"${OUTPUT_PATH}" -i input/torus.obj</runcommand>
         <rundir>../voxel-build/netbeans</rundir>
         <buildfirst>false</buildfirst>
         <terminal-type>0</terminal-type>
