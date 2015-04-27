@@ -1,0 +1,14 @@
+[35m[1mScanning dependencies of target voxel
+[0m[  9%] [32mBuilding CXX object voxel/CMakeFiles/voxel.dir/src/algorithm2d.cpp.obj
+[0m[ 18%] [32mBuilding CXX object voxel/CMakeFiles/voxel.dir/src/algorithm3d.cpp.obj
+[0m[ 27%] [32mBuilding CXX object voxel/CMakeFiles/voxel.dir/src/file.cpp.obj
+[0m[ 36%] [32mBuilding CXX object voxel/CMakeFiles/voxel.dir/src/image.cpp.obj
+[0m[ 45%] [32mBuilding CXX object voxel/CMakeFiles/voxel.dir/src/main.cpp.obj
+[0m[ 54%] [32mBuilding CXX object voxel/CMakeFiles/voxel.dir/src/my_time.cpp.obj
+[0m[ 63%] [32mBuilding CXX object voxel/CMakeFiles/voxel.dir/src/out_algorithm3d.cpp.obj
+[0m[ 72%] [32mBuilding CXX object voxel/CMakeFiles/voxel.dir/src/test.cpp.obj
+[0m[ 81%] [32mBuilding CXX object voxel/CMakeFiles/voxel.dir/src/util.cpp.obj
+[0m[ 90%] [32mBuilding CXX object voxel/CMakeFiles/voxel.dir/src/voxel.cpp.obj
+[0m[100%] [32mBuilding CXX object voxel/CMakeFiles/voxel.dir/src/wavefront.cpp.obj
+[0m[31m[1mLinking CXX executable ../bin/voxel.exe
+[0m[100%] Built target voxel
