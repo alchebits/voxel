@@ -185,8 +185,8 @@ bool GridWriter::writeImages(GRID_PLANE plane){
 		break;
 	case GRID_PLANE_TRANSVERSE:
 		width = grid->getSizeZ();
-		heigth = grid->getSizeY();
-		depth = grid->getSizeX();
+		heigth = grid->getSizeX();
+		depth = grid->getSizeY();
 		break;
 	case GRID_PLANE_SAGITTAL:
 		width = grid->getSizeX();
@@ -214,7 +214,7 @@ bool GridWriter::writeImages(GRID_PLANE plane){
 				}else
 				if(plane == GRID_PLANE_TRANSVERSE)
 				{
-					if( grid->getVoxel(crossDepth, i, j) ){
+					if( grid->getVoxel(crossDepth, j, i) ){
 						tgaImageGrey.setPixel(i, j, 255);
 					}else{
 						tgaImageGrey.setPixel(i, j, 0);

@@ -105,7 +105,7 @@ WavefrontOBJ::~WavefrontOBJ(){
 	}
 }
 void WavefrontOBJ::addPoint(const realtype* xyz){
-	this->addPoint(xyz[0],xyz[1],xyz[2]);
+	this->addPoint(xyz[0],xyz[2],xyz[1]);
 }
 void WavefrontOBJ::addPoint(realtype x, realtype y, realtype z){
 	this->checkIsMaxOrMin(x,y,z);
